@@ -4,11 +4,29 @@ FROM ubuntu:22.04
 # Set environment variables to avoid user interaction during installation
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install Playwright using npm
-RUN npx playwright install --with-deps chromium
+# Update and install basic packages
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        ca-certificates \
+        curl \
+        wget \
+        git \
+        vim \
+        nano \
+        sudo \
+        locales \
+        nodejs \
+        npm \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install Playwright browsers
-RUN npx playwright install --with-deps
+# Optionally update npm to the latest version (ensures latest npx)
+RUN npm install -g npm@latest
+
+# Install ts-node and typescript globally
+RUN npm install -g ts-node typescript
+
+# Install Playwright and its browsers
+RUN npm install -g playwright && npx playwright install --with-deps
 # Install Playwright dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
