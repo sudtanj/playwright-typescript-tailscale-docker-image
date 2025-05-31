@@ -4,7 +4,8 @@ FROM ubuntu:22.04
 # Set environment variables to avoid user interaction during installation
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Update and install basic packages
+
+# Update and install basic packages (without nodejs/npm)
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         ca-certificates \
@@ -15,8 +16,11 @@ RUN apt-get update && \
         nano \
         sudo \
         locales \
-        nodejs \
-        npm \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Node.js (includes npm and npx) from NodeSource
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
 # Optionally update npm to the latest version (ensures latest npx)
