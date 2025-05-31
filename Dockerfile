@@ -1,6 +1,3 @@
-# Leverage Docker build cache for dependencies
-COPY package.json package-lock.json* ./
-RUN npm ci || npm install
 # Use Ubuntu 22.04 as the base image
 FROM ubuntu:22.04
 
