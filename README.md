@@ -18,10 +18,14 @@ To enable Docker Hub deployment, add the following repository secrets in your Gi
 - `DOCKERHUB_USERNAME`: Your Docker Hub username
 - `DOCKERHUB_TOKEN`: A Docker Hub access token (create one from your Docker Hub account)
 
+
+## Docker Hub
+The built image can be accessed on Docker Hub at: [sudtanj/playwright-typescript-tailscale-docker](https://hub.docker.com/r/sudtanj/playwright-typescript-tailscale-docker)
+
 ## Usage
 1. Clone this repository and modify the Dockerfile as needed.
 2. Push changes to the `main` branch to trigger the GitHub Actions workflow.
-3. The built image will be available on Docker Hub under your account.
+3. The built image will be available on Docker Hub under your account and at the link above.
 
 ## Example Docker Run
 ```
