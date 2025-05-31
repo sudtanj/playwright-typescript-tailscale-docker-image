@@ -174,8 +174,9 @@ ENV LC_ALL en_US.UTF-8
 # Set the working directory
 WORKDIR /workspace
 
-# Make entrypoint script executable
-RUN chmod +x /workspace/../entrypoint.sh
+# Copy entrypoint script into the image and make it executable
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 # Set entrypoint to start tailscaled and then run the main command
 ENTRYPOINT ["/entrypoint.sh"]
