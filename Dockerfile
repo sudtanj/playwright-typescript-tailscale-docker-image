@@ -174,5 +174,9 @@ ENV LC_ALL en_US.UTF-8
 # Set the working directory
 WORKDIR /workspace
 
-# Default command
+# Make entrypoint script executable
+RUN chmod +x /workspace/../entrypoint.sh
+
+# Set entrypoint to start tailscaled and then run the main command
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/bin/bash"]
