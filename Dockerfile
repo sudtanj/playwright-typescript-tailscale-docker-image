@@ -5,7 +5,7 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install Playwright using npm
-RUN npm install -g playwright
+RUN npx playwright install --with-deps chromium
 
 # Install Playwright browsers
 RUN npx playwright install --with-deps
